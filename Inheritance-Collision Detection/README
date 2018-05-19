@@ -1,0 +1,14 @@
+Name:Hameeda Dildar Taj
+
+Course:2D Game Construction
+
+Clemson Email Address:htaj@clemson.edu
+
+Project no:4
+
+Project due date:Apr 6
+
+Project description:Adding a Player Object
+
+About the project: My goal is to have a FairyLand game.This has 3 backgrounds, which moves in varing speeds.Player is the Fairy, it can fly up,down,right and left based on the user input. Magic stars evades if it is hit by the fairy else it escapes and moves away from the fairy. 
+   I am planning to have score count for the number of magic star that are being hit by the player.If score count reaches a specified number, fairy gets an additional life.Also planning to incorporate shooting,explosions,object pooling in the game. End goal of the fairy is to defeat the monster and acquire the quest and save the little princess.
