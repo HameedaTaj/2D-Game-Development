@@ -1,12 +1,4 @@
-Name:Hameeda Dildar Taj
 
-Course:2D Game Construction
-
-Clemson Email Address:htaj@clemson.edu
-
-Project no:5
-
-Project due date:Apr 20
 
 Project description:Explosion and Projectile
 Implementation: 
@@ -15,4 +7,4 @@ Implementation:
  3.Object pool, containing the bullets are displayed in another hud.
  Depth is not included since it would not look good in this game.Hence avoided it.
 
-Purple Triangle sphere is from, https://www.pinterest.com/pin/565483296934847310/
+
