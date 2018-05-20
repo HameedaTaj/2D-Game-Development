@@ -14,15 +14,18 @@ OBJS = \
 	world.o \
 	spriteSheet.o \
 	image.o \
+	bullet.o \
 	imageFactory.o \
         twowaysprite.o \
 	frameGenerator.o \
 	sprite.o \
-        scaledSprite.o \
 	multisprite.o \
         smartSprite.o \
 	hud.o \
         collisionStrategy.o \
+        explodingSprite.o \
+	shootingSprite.o \
+        chunk.o \
         player.o \
 	vector2f.o \
 	clock.o \

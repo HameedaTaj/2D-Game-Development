@@ -26,9 +26,12 @@ public:
   void up();
   void down();
   void stop();
+  enum FACE {LEFT, RIGHT};
+  FACE getPlayerDirection() const { return facing; }
 private:
   bool collision;
   Vector2f initialVelocity;
   std::list<SmartSprite*> observers;
+  FACE facing;
 };
 #endif

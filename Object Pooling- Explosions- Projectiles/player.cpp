@@ -6,20 +6,23 @@ Player::Player( const std::string& name) :
   MultiSprite(name),
   collision(false),
   initialVelocity(getVelocity()),
-  observers()
+  observers(),
+  facing(RIGHT)
 { }
 
 Player::Player(const Player& s) :
   MultiSprite(s), 
   collision(s.collision),
   initialVelocity(s.getVelocity()),
-  observers(s.observers)
+  observers(s.observers),
+  facing(s.facing)
   { }
 
 Player& Player::operator=(const Player& s) {
   MultiSprite::operator=(s);
   collision = s.collision;
   initialVelocity = s.initialVelocity;
+  facing = s.facing;
   return *this;
 }
 
@@ -32,11 +35,13 @@ void Player::stop() {
 void Player::right() { 
   if ( getX() < worldWidth-getScaledWidth()) {
     setVelocityX(initialVelocity[0]);
+    facing = RIGHT;
   }
 } 
 void Player::left()  { 
   if ( getX() > 0) {
     setVelocityX(-initialVelocity[0]);
+    facing = LEFT;
   }
 } 
 void Player::up()    { 

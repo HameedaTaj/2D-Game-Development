@@ -6,7 +6,7 @@
 #include "collisionStrategy.h"
 #include "smartSprite.h"
 #include "hud.h"
-#include "scaledSprite.h"
+#include "shootingSprite.h"
 
 class Engine {
 public:
@@ -27,9 +27,10 @@ private:
   World sky;
   World mountain;
   World building;
+  
   Viewport& viewport;
-  Player* player;
-  std::vector<Drawable*> scaledsprites;
+  ShootingSprite* player;
+  Drawable* sparkler;
   std::vector<SmartSprite*> sprites;
   std::vector<CollisionStrategy*> strategies;
   int currentStrategy;
@@ -39,6 +40,7 @@ private:
   bool showHud;
   bool makeVideo;
    void draw() const;
+   void drawHud() const;
   void update(Uint32);
   void printScales() const;
   void checkForCollisions();

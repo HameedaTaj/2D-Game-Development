@@ -4,13 +4,14 @@
 #include <vector>
 #include <cmath>
 #include "drawable.h"
+#include "explodingSprite.h"
+
 
 class MultiSprite : public Drawable {
 public:
   MultiSprite(const std::string&);
-  MultiSprite(const std::string&,float);
   MultiSprite(const MultiSprite&);
-
+  ~MultiSprite();
   virtual void draw() const;
   virtual void update(Uint32 ticks);
 
@@ -26,10 +27,10 @@ public:
   virtual const SDL_Surface* getSurface() const { 
     return images[currentFrame]->getSurface();
   }
-private:
-	Vector2f makeVelocity(int, int,float) const;
+  virtual void explode();
 protected:
   std::vector<Image *> images;
+  ExplodingSprite* explosion;
 
   unsigned currentFrame;
   unsigned numberOfFrames;

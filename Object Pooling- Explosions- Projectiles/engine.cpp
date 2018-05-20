@@ -15,25 +15,15 @@
 const SDL_Color color = {164,48,50,255};
 const SDL_Color color1 = {240,232,112,255};
 
-class ScaledSpritesInstances
-{
-  public:
-    bool operator()(const Drawable* lhs, const Drawable* rhs) const {
-	return lhs->getScale()<rhs->getScale();
-     }
-};
 
 Engine::~Engine() { 
 
   std::cout << "Terminating program" << std::endl;
-  for(auto& sp: scaledsprites)
-	delete sp;
   std::vector<SmartSprite*>::iterator it=sprites.begin();
   while(it!=sprites.end()){
     delete *it;
   ++it;
   }
-  
   //delete player;
   for(CollisionStrategy* strategy:strategies){
 	delete strategy;
@@ -47,12 +37,11 @@ Engine::Engine() :
   clock( Clock::getInstance() ),
   renderer( rc->getRenderer() ),
   sky("sky", Gamedata::getInstance().getXmlInt("sky/factor") ),
-  mountain("mountain",Gamedata::getInstance().getXmlInt("mountain/factor")),
-  
+  mountain("mountain",Gamedata::getInstance().getXmlInt("mountain/factor")), 
   building("building", Gamedata::getInstance().getXmlInt("building/factor") ),
   viewport( Viewport::getInstance() ),
-  player(new Player("Fairy")),
-  scaledsprites(),
+  player(new ShootingSprite("Fairy")),
+  sparkler(new MultiSprite("Star")),
   sprites(),
   strategies(),
   currentStrategy(0),
@@ -66,23 +55,8 @@ Engine::Engine() :
   Vector2f pos = player->getPosition();
   int w=player->getScaledWidth();
   int h=player->getScaledHeight();
-  
-  //push scaled sprites
-  unsigned int n = Gamedata::getInstance().getXmlInt("snowflake/noOfObjects/instances");
-  static float scale = Gamedata::getInstance().getXmlFloat("snowflake/scale/min");
-  for(unsigned int i=0;i<n;++i)
-  {
-	float diff = Gamedata::getInstance().getXmlFloat("snowflake/scale/max")-Gamedata::getInstance().getXmlFloat("snowflake/scale/min");
-	float incr = diff/n;
-	scale = scale+incr;
-	auto* s = new ScaledSprite("snowflake",scale);
-	s->setScale(scale);
-	scaledsprites.push_back(s);
-  }
-  std::vector<Drawable*>::iterator ptr = scaledsprites.begin();
-  sort(ptr,scaledsprites.end(),ScaledSpritesInstances());
-
-  //push smartsprites and attach it to player
+ // sprites.push_back(new MultiSprite("SpinningStar"));
+ // sprites.push_back(new TwoWaySprite("Fairy"));
   for(int i=0;i<noofsprites;i++)
   {  sprites.push_back(new SmartSprite("pinkbird",pos,w,h)); 
      player->attach(sprites[i]);
@@ -103,11 +77,10 @@ std::string IntToString(int n)
 void Engine::draw() const {
   SDL_Color textColor2;
   sky.draw();
-  for(int i=0;i<((Gamedata::getInstance().getXmlInt("snowflake/noOfObjects/instances"))/2);i++) scaledsprites[i]->draw();
   mountain.draw();
-  for(int i=6;i<(Gamedata::getInstance().getXmlInt("snowflake/noOfObjects/instances"));i++) scaledsprites[i]->draw();
   building.draw();
   player->draw();
+  sparkler->draw();
   if(showHud){
   Hud::getInstance().displayHud();}
   IoMod::getInstance().writeText("Press m to change strategy", 460, 70,color1);
@@ -125,11 +98,35 @@ void Engine::draw() const {
   io.writeText(strm2.str(),30,100,color1);
   io.writeText("Hameeda Taj",30,450,textColor2);
   for(auto* s: sprites) s->draw();
-
+  drawHud();
   viewport.draw();
   SDL_RenderPresent(renderer);
 }
+
+void Engine::drawHud() const {
+  unsigned int freelistSize = player->getFreeList();
+  unsigned int bulletlistSize = player->getBulletList();
+  
+  if (showHud || clock.getSeconds() <= 3){
+  //	Hud::getInstance().draw(renderer);
+    Hud::getInstance().drawPool(renderer, bulletlistSize, freelistSize);
+
+  }
+ }
+
 void Engine::checkForCollisions() {
+  collision=false;
+  if( strategies[currentStrategy]->execute(*player,*sparkler)){
+	collision = true;
+ 	player->explode();
+  }
+  for(const auto d : player->getBullets()){
+     if(strategies[currentStrategy]->execute(*sparkler,d)){
+	collision = true;
+	sparkler->explode();
+      }
+   }
+	
   auto it = sprites.begin();
   while ( it != sprites.end() ) {
     if ( strategies[currentStrategy]->execute(*player, **it) ) {
@@ -137,16 +134,25 @@ void Engine::checkForCollisions() {
       player->detach(doa);
       delete doa;
       it = sprites.erase(it);
+     // player->explode();
     }
     else ++it;
   }
+  if(collision){
+	player->collided();
+   }
+  else{
+	player->missed();
+	collision = false;
+   }
+  
 }
 
 void Engine::update(Uint32 ticks) {
   checkForCollisions();
-  for(auto* s:scaledsprites)s->update(ticks);
   for(auto* s:sprites) s->update(ticks);
   player->update(ticks);
+  sparkler->update(ticks);
   sky.update(); 
   mountain.update();
   building.update();
@@ -180,10 +186,12 @@ void Engine::play() {
           if ( clock.isPaused() ) clock.unpause();
           else clock.pause();
         }
+ 	if ( keystate[SDL_SCANCODE_SPACE] ) {
+            player->shoot();
+        }
         if ( keystate[SDL_SCANCODE_M] ) {
           currentStrategy = (1 + currentStrategy) % strategies.size();
         }
-
         if ( keystate[SDL_SCANCODE_T] ) {
           switchSprite();
         }
@@ -215,6 +223,10 @@ void Engine::play() {
       if (keystate[SDL_SCANCODE_S]) {
         static_cast<Player*>(player)->down();
       }
+      if(keystate[SDL_SCANCODE_E]){
+	 static_cast<Player*>(player)->explode();
+	}
+
       if(keystate[SDL_SCANCODE_F1]){
 	showHud=!showHud;
 	}

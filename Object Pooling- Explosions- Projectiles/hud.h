@@ -12,6 +12,7 @@ public:
   static Hud& getInstance();
   ~Hud();
   void displayHud() const;
+  void drawPool(SDL_Renderer * const, unsigned int, unsigned int);
 private:
   const int width;
   const int height;
