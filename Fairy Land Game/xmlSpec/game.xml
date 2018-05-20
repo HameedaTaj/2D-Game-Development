@@ -1,0 +1,249 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation.
+     So make sure to include your name as part of the screenTitle -->
+<title>FairyLand</title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<maxFrames>700</maxFrames>
+<username>htaj</username>
+
+<window>
+  <width>800</width>
+  <height>300</height>
+</window>
+
+<view>
+  <width>800</width>
+  <height>400</height>
+  <enemyRange> 50 </enemyRange>
+</view>
+
+<world>
+  <width>5000</width>
+  <height>425</height>
+</world>
+
+<helpMenu>
+  <width>240</width>
+  <height>130</height>
+  <start x="10" y="20"/>
+  <color red="255" green="255" blue="0"/>
+  <time>5</time>
+</helpMenu>
+
+<gameOverBox>
+  <width>400</width>
+  <height>350</height>
+  <start x="230" y="50"/>
+  <color red="255" green="255" blue="0"/>
+</gameOverBox>
+
+<hud>
+  <width>200</width>
+  <height>50</height>
+  <start x="0" y="430"/>
+  <color red="255" green="255" blue="0"/>
+</hud>
+
+<hudHeart>
+  <file>assets/heart.png</file>
+  <transparency>false</transparency>
+</hudHeart>
+
+<hudFlower>
+  <file>assets/flower.png</file>
+  <transparency>false</transparency>
+</hudFlower>
+
+<hudDeadGreenEnemy>
+  <file>assets/dead_green_enemy.png</file>
+  <frames>1</frames>
+  <transparency>false</transparency>
+</hudDeadGreenEnemy>
+
+<hudDeadRedEnemy>
+  <file>assets/dead_red_enemy.png</file>
+  <frames>1</frames>
+  <transparency>false</transparency>
+</hudDeadRedEnemy>
+
+<sky-back>
+  <file>assets/sky.png</file>
+  <factor>9</factor>
+  <transparency>false</transparency>
+</sky-back>
+
+
+<mountain-back>
+  <file>assets/mountains.png</file>
+  <factor>5</factor>
+  <transparency>true</transparency>
+</mountain-back>
+
+<building-back>
+  <file>assets/building.png</file>
+  <factor>3</factor>
+  <transparency>true</transparency>
+</building-back>
+
+
+<font name="font">
+  <file>fonts/calibrib.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>0</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</font>
+
+<Baby>
+  <file>assets/baby.png</file>
+  <startLoc x="4900" y="300"/>
+  <frames>1</frames>
+ <imageWidth>81</imageWidth>
+  <imageHeight>92</imageHeight>
+  <transparency>false</transparency>
+</Baby>
+
+<Butterfly>
+  <file>assets/butterfly.png</file>
+  <frames>10</frames>
+  <transparency>false</transparency>
+  <bigCount>20</bigCount>
+  <smallCount>50</smallCount>
+  <startLoc x="120" y="180"/>
+  <imageWidth>147</imageWidth>
+  <imageHeight>123</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>200</speedX>
+  <speedY>200</speedY>
+</Butterfly>
+
+<Fairy>
+  <rightSprite>
+    <file>assets/girl.png</file>
+    <frames>4</frames>
+    <transparency>false</transparency>
+  </rightSprite>
+  <leftSprite>
+    <file>assets/girlleft.png</file>
+    <frames>4</frames>
+    <transparency>false</transparency>
+  </leftSprite>
+  <startLoc x="120" y="180"/>
+  <frames>4</frames>
+  <imageWidth>153</imageWidth>
+  <imageHeight>155</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>800</speedX>
+  <speedY>800</speedY>
+  <lives>3</lives>
+  <health>100</health>
+  <enemyCollisionHealthLoss>50</enemyCollisionHealthLoss>
+  <chunk>
+    <size>15</size>
+    <distance>300</distance>
+  </chunk>
+</Fairy>
+
+<GreenEnemy>
+  <file>assets/green_enemy.png</file>
+  <startLoc x="80" y="50"/>
+  <count>7</count>
+  <frames>20</frames>
+  <imageWidth>80</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>-100</speedX>
+  <speedY>50</speedY>
+  <safeDistance> 300 </safeDistance>
+  <transparency>false</transparency>
+  <bulletsToDie>1</bulletsToDie>
+  <chunk>
+    <size>15</size>
+    <distance>100</distance>
+  </chunk>
+</GreenEnemy>
+
+<RedEnemy>
+  <file>assets/red_enemy.png</file>
+  <startLoc x="80" y="50"/>
+  <count>3</count>
+  <frames>20</frames>
+  <imageWidth>80</imageWidth>
+  <imageHeight>60</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>-150</speedX>
+  <speedY>100</speedY>
+  <safeDistance> 300 </safeDistance>
+  <transparency>false</transparency>
+  <bulletsToDie>2</bulletsToDie>
+  <chunk>
+    <size>10</size>
+    <distance>200</distance>
+  </chunk>
+</RedEnemy>
+
+<Devil>
+  <file>assets/devil.png</file>
+  <startLoc x="4700" y="240"/>
+  <frames>6</frames>
+  <imageWidth>180</imageWidth>
+  <imageHeight>162</imageHeight>
+  <frameInterval>100</frameInterval>
+  <speedX>0</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+  <bulletsToDie>20</bulletsToDie>
+  <chunk>
+    <size>30</size>
+    <distance>400</distance>
+  </chunk>
+</Devil>
+
+<Flower>
+  <file>assets/flower.png</file>
+  <count>20</count>
+  <transparency>false</transparency>
+</Flower>
+
+<BlueBullet>
+  <file>assets/blue_bullet.png</file>
+  <startLoc x="100" y="100"/>
+  <speedX>250</speedX>
+  <speedY>0</speedY>
+  <frames>3</frames>
+  <frameInterval>100</frameInterval>
+  <imageWidth>33</imageWidth>
+  <imageHeight>17</imageHeight>
+  <rightOffset x="100" y="50"/>
+  <leftOffset x="0" y="50"/>
+  <distance>500</distance>
+  <bulletInterval>200</bulletInterval>
+  <minBulletSpeed>200</minBulletSpeed>
+  <collisionStrategy>"MidPoint"</collisionStrategy>
+  <transparency>false</transparency>
+</BlueBullet>
+
+<RedBullet>
+  <file>assets/red_bullet.png</file>
+  <startLoc x="100" y="100"/>
+  <speedX>250</speedX>
+  <speedY>0</speedY>
+  <frames>3</frames>
+  <frameInterval>100</frameInterval>
+  <imageWidth>63</imageWidth>
+  <imageHeight>30</imageHeight>
+  <leftOffset x="0" y="30"/>
+  <distance>800</distance>
+  <bulletInterval>5000</bulletInterval>
+  <minBulletSpeed>200</minBulletSpeed>
+  <collisionStrategy>MidPoint</collisionStrategy>
+  <transparency>false</transparency>
+</RedBullet>
+
+</GameData>
