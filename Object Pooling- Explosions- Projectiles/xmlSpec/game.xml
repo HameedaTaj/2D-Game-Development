@@ -1,0 +1,165 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<title>FairyLand </title>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>5</period>
+
+<maxFrames>300</maxFrames>
+<username>htaj</username>
+
+<view>
+  <width>854</width>
+  <height>512</height>
+</view>
+
+<world>
+  <width>3000</width>
+  <height>512</height>
+</world>
+<sky>
+  <file>assets/sky.png</file>
+  <factor>3</factor>
+  <transparency>false</transparency>
+</sky>
+
+<mountain>
+  <file>assets/mountain.png</file>
+  <factor>2</factor>
+  <transparency>false</transparency>
+</mountain>
+
+
+<building>
+  <file>assets/building.png</file>
+  <factor>1</factor>
+  <transparency>true</transparency>
+</building>
+
+<hud>
+<Pool>
+ <posX>660</posX>
+ <posY>360</posY>
+ <width>165</width>
+ <height>80</height>
+</Pool>
+<hudColor>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+  <alpha>255</alpha>
+</hudColor>
+<border>
+ <thickness>1</thickness>
+ <Color>
+    <red>255</red>
+    <green>255</green>
+    <blue>0</blue>
+    <alpha>255</alpha>
+ </Color>
+</border>
+<textColor>
+  <red>255</red>
+  <green>255</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</textColor>
+<width>230</width>
+<height>180</height>
+<start x="30" y="130"/>
+<seconds>3</seconds>
+</hud>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>24</size>
+  <red>255</red>
+  <green>0</green>
+  <blue>0</blue>
+  <alpha>0</alpha>
+</font>
+
+<ball>
+  <file>assets/energyball.png</file>
+  <interval>300</interval>
+  <distance>420</distance>
+  <startLoc x="1750" y="540"/>
+  <speedX>450</speedX>
+  <speedY>450</speedY>
+  <transparency>false</transparency>
+  <safeDistance>150</safeDistance>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</ball>
+
+<Star>
+  <file>assets/purple.png</file>
+  <startLoc x="50" y="80"/>
+  <frames>25</frames>
+  <imageWidth>100</imageWidth>
+  <imageHeight>100</imageHeight>
+  <frameInterval>15</frameInterval>
+  <speedX>150</speedX>
+  <speedY>0</speedY>
+  <transparency>true</transparency>
+  <chunk>
+    <size>9</size>
+    <distance>200</distance>
+  </chunk>
+</Star>
+
+<Fairy>
+  <file>assets/fairy.png</file>
+  <bullet>ball</bullet>
+  <startLoc x="50" y="335"/>
+  <frames>4</frames>
+  <frameSpeed>100</frameSpeed>
+  <imageWidth>153</imageWidth>
+  <imageHeight>155</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+  <chunk>
+	<size>40</size>
+	<distance>200</distance>
+  </chunk>
+</Fairy>
+
+<Fairyleft>
+  <file>assets/girlleft.png</file>
+  <bullet>ball</bullet>
+  <startLoc x="50" y="335"/>
+  <frames>4</frames>
+  <frameSpeed>100</frameSpeed>
+  <imageWidth>153</imageWidth>
+  <imageHeight>155</imageHeight>
+  <frameInterval>50</frameInterval>
+  <speedX>150</speedX>
+  <speedY>150</speedY>
+  <transparency>false</transparency>
+  <chunk>
+	<size>40</size>
+	<distance>200</distance>
+  </chunk>
+
+</Fairyleft>
+
+
+
+<pinkbird>
+  <file>assets/flower.png</file>
+  <startLoc x="227" y="240"/>
+  <noofobj>20</noofobj>
+  <speedX>199</speedX>
+  <speedY>199</speedY>
+  <safeDistance>135</safeDistance>
+  <transparency>false</transparency>
+</pinkbird>
+
+</GameData>
